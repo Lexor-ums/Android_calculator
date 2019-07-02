@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="divide_symbol">/</string>
+    <string name="back_symbol">b</string>
+</resources>

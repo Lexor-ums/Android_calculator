@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:layout_gravity="top"
+            android:id="@+id/historyField"
+            android:gravity="bottom|right"
+            android:lines="5" android:scrollHorizontally="true"
+            android:maxLines="5"
+    />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="36sp"
+            android:text="0"
+            android:id="@+id/dataField"
+            android:gravity="bottom|right"
+    />
+<android.support.v7.widget.GridLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:orientation="horizontal"
+        app:columnCount="4"
+        app:layout_gravity="bottom">
+
+
+    <Button android:text="C"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_row="3"
+            app:layout_column="2"
+            android:onClick="onClear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:id="@+id/commandClear"/>
+    <Button
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_row="3"
+            app:layout_column="3"
+            android:layout_width="0dp"
+            android:onClick="onEraseClicked"
+            android:layout_height="wrap_content" android:id="@+id/commandBack"
+            android:text="X"/>
+    <Button android:text="1"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/digitOne"
+            android:onClick="onDigitInput" />
+    <Button android:text="2"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:onClick="onDigitInput"
+            android:layout_height="wrap_content" android:id="@+id/digitTwo"/>
+    <Button android:text="3"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:onClick="onDigitInput"
+            android:layout_height="wrap_content" android:id="@+id/digitThree"/>
+    <Button android:text="+"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:onClick="onOperatorClicked"
+            android:layout_height="wrap_content" android:id="@+id/commandPlus"/>
+    <Button android:text="4"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:onClick="onDigitInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:id="@+id/digitFour"/>
+    <Button android:text="5"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:onClick="onDigitInput"
+            android:layout_height="wrap_content" android:id="@+id/digitFive"/>
+    <Button android:text="6"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:onClick="onDigitInput"
+            android:layout_height="wrap_content" android:id="@+id/digitSix"/>
+    <Button android:text="-"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:onClick="onOperatorClicked"
+            android:layout_height="wrap_content" android:id="@+id/commandMinus"/>
+    <Button android:text="7"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:onClick="onDigitInput"
+            android:layout_height="wrap_content" android:id="@+id/digitSeven"/>
+    <Button android:text="8"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
+            app:layout_rowWeight="1"
+            android:onClick="onDigitInput"
+            android:layout_height="wrap_content" android:id="@+id/digitEigth"/>
+    <Button android:text="9"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
+            app:layout_rowWeight="1"
+            android:onClick="onDigitInput"
+            android:layout_height="wrap_content" android:id="@+id/digitNine"/>
+    <Button android:text="*"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:onClick="onOperatorClicked"
+            android:layout_height="wrap_content" android:id="@+id/commandMultuply"/>
+    <Button android:text="0"
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:onClick="onDigitInput"
+            android:layout_height="wrap_content" android:id="@+id/digitZero"/>
+    <Button android:text="."
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:onClick="onIntDoubleSwitch"
+            android:layout_height="wrap_content" android:id="@+id/commandDot"/>
+    <Button android:text="="
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:onClick="onOperatorClicked"
+            android:layout_height="wrap_content" android:id="@+id/commandCalc"/>
+    <Button
+            android:textSize="36sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:onClick="onOperatorClicked"
+            android:layout_height="wrap_content"
+            android:id="@+id/commandDivide"
+            android:text="@string/divide_symbol"/>
+</android.support.v7.widget.GridLayout>
+</LinearLayout>
