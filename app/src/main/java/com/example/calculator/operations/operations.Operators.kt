@@ -16,13 +16,13 @@ sealed class Operator{
     object Addition : Operator() {
         override fun calc(leftVal: Number, rightVal: Number): Number {
             return when (leftVal) {
-                is Int -> when (rightVal) {
-                    is Int -> leftVal + rightVal
+                is Long -> when (rightVal) {
+                    is Long -> leftVal + rightVal
                     is Double -> leftVal + rightVal
                     else -> 0
                 }
                 is Double -> when (rightVal) {
-                    is Int -> leftVal + rightVal
+                    is Long -> leftVal + rightVal
                     is Double -> leftVal + rightVal
                     else -> 0
                 }
@@ -36,13 +36,13 @@ sealed class Operator{
     object Subtraction : Operator() {
         override fun calc(leftVal: Number, rightVal: Number): Number {
             return when (leftVal) {
-                is Int -> when (rightVal) {
-                    is Int -> leftVal - rightVal
+                is Long -> when (rightVal) {
+                    is Long -> leftVal - rightVal
                     is Double -> leftVal - rightVal
                     else -> 0
                 }
                 is Double -> when (rightVal) {
-                    is Int -> leftVal - rightVal
+                    is Long -> leftVal - rightVal
                     is Double -> leftVal - rightVal
                     else -> 0
                 }
@@ -59,13 +59,13 @@ sealed class Operator{
             if (rightVal.toString() == "0")
                 return NaN
             return when (leftVal) {
-                is Int -> when (rightVal) {
-                    is Int -> leftVal / rightVal
+                is Long -> when (rightVal) {
+                    is Long -> leftVal / rightVal
                     is Double -> leftVal / rightVal
                     else -> 0
                 }
                 is Double -> when (rightVal) {
-                    is Int -> leftVal / rightVal
+                    is Long -> leftVal / rightVal
                     is Double -> leftVal / rightVal
                     else -> 0
                 }
@@ -80,13 +80,13 @@ sealed class Operator{
     object Multiply : Operator() {
         override fun calc(leftVal: Number, rightVal: Number): Number {
             return when (leftVal) {
-                is Int -> when (rightVal) {
-                    is Int -> leftVal * rightVal
+                is Long -> when (rightVal) {
+                    is Long -> leftVal * rightVal
                     is Double -> leftVal * rightVal
                     else -> 0
                 }
                 is Double -> when (rightVal) {
-                    is Int -> leftVal * rightVal
+                    is Long -> leftVal * rightVal
                     is Double -> leftVal * rightVal
                     else -> 0
                 }

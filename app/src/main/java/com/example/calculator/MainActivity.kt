@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.calculator.operations.Operator
 import com.example.calculator.operations.Solver
+import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
@@ -22,8 +23,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        textView = findViewById(R.id.dataField)
-        historyTextView = findViewById(R.id.historyField)
+        textView = dataField
+        historyTextView = historyField
         historyTextView.movementMethod = ScrollingMovementMethod()
     }
 
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             textView.text = ""
             isSolved = false
         }
-        val button : Button? = findViewById(view.id)
+        val button : Button? = view as? Button
         var digit: String = button?.text.toString()
         var number: String = when(isNewNumber){
             true -> digit
@@ -118,12 +119,12 @@ class MainActivity : AppCompatActivity() {
      */
     fun onOperatorClicked(view: View) {
         var number: Number?
-        val button : Button? = findViewById(view.id)
+        val button : Button? = view as? Button
         try {
             if(isFloatingPointNumber)
                 number = textView.text.toString().toDouble()
             else
-                number = textView.text.toString().toInt()
+                number = textView.text.toString().toLong()
         }
         catch (e : Exception){
             return
