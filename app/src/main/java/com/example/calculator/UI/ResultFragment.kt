@@ -17,8 +17,14 @@ class ResultFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.result_fragment_layout, container, false)
         historyTextView = view.historyField
+        historyTextView.text = savedInstanceState?.getString("history")
         historyTextView.movementMethod = ScrollingMovementMethod()
         return view
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("history", historyTextView.text.toString())
     }
 
     fun onClear() {

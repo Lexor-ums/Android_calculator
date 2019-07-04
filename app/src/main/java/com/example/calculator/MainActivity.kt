@@ -19,8 +19,8 @@ import java.lang.Exception
 
 class MainActivity : AppCompatActivity(), InputFragment.OnOperationComplited {
 
-    private lateinit var inputFrag : InputFragment
-    private lateinit var resultFrag : ResultFragment
+    private lateinit var inputFrag: InputFragment
+    private lateinit var resultFrag: ResultFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), InputFragment.OnOperationComplited {
     }
 
     override fun onAttachFragment(fragment: Fragment?) {
-        if(fragment is InputFragment)
+        if (fragment is InputFragment)
             fragment.setInputFragmentCallback(this)
     }
 
@@ -48,32 +48,36 @@ class MainActivity : AppCompatActivity(), InputFragment.OnOperationComplited {
     /**
     //     * обработка события вводы цифр
     //     */
-    fun onDigitInput(view: View){
+    fun onDigitInput(view: View) {
         inputFrag.onDigitInput(view)
     }
+
     /**
      * обработка выбора операций над числами
      */
     fun onOperatorClicked(view: View) {
         inputFrag.onOperatorClicked(view)
     }
+
     /**
      * обработка события удаления введённого символа
      */
-    fun onEraseClicked(@Suppress("UNUSED_PARAMETER")view: View){
+    fun onEraseClicked(@Suppress("UNUSED_PARAMETER") view: View) {
         inputFrag.onEraseClicked()
     }
+
     /**
      * обработка события сброса данных
      */
-    fun onClear(@Suppress("UNUSED_PARAMETER")view: View){
+    fun onClear(@Suppress("UNUSED_PARAMETER") view: View) {
         inputFrag.onClear()
         resultFrag.onClear()
     }
+
     /**
      * обработка переключения на ввод чисел с плавающей точкой
      */
-    fun onIntDoubleSwitch(@Suppress("UNUSED_PARAMETER")view: View){
+    fun onIntDoubleSwitch(@Suppress("UNUSED_PARAMETER") view: View) {
         inputFrag.onIntDoubleSwitch()
     }
 }

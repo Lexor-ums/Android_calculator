@@ -26,9 +26,25 @@ class InputFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.input_fragment_layout, container, false)
         inputField = view.dataField
+        if(savedInstanceState == null){
+            inputField.text = "0"
+        }
+        else{
+            inputField.text = savedInstanceState.getString("currentValue")
+            isFloatingPointNumber = savedInstanceState.getBoolean("isFloatingPointNumber")
+            isNewNumber = savedInstanceState.getBoolean("isNewNumber")
+            isSolved = savedInstanceState.getBoolean("isSolved")
+        }
         return view
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("isNewNumber", isNewNumber)
+        outState.putBoolean("isFloatingPointNumber", isFloatingPointNumber)
+        outState.putBoolean("isSolved", isSolved)
+        outState.putString("currentValue", inputField.text.toString())
+    }
     /**
     //     * обработка события вводы цифр
     //     */
@@ -142,15 +158,34 @@ class InputFragment : Fragment() {
     fun setInputFragmentCallback(callback: OnOperationComplited){
         this.callback = callback
     }
+
+    /**
+     * Интерфейс для взаимодействия с фрагментов отображения результатов
+     */
     interface OnOperationComplited {
+        /**
+         * Оповещение о выполении математичесвкой операции
+         * @param value правый операнд
+         * @param result результат вычисления
+         * @param operationType символ операции
+         */
         fun showOperationResult(value: Number, result: Number, operationType: String) {
 
         }
 
+        /**
+         * Оповещение о завершении расчётов
+         * @param value конечное значение
+         */
         fun calculationsComplited(value: Number) {
 
         }
 
+        /**
+         * Оповещении о начале новой серии вычислений
+         * @param value исходное число
+         * @param operationType символ операции
+         */
         fun calculationsStarted(value: Number, operationType: String) {
 
         }
