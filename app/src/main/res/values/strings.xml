@@ -2,4 +2,7 @@
     <string name="app_name">Calculator</string>
     <string name="divide_symbol">/</string>
     <string name="back_symbol">b</string>
+    <string name="menu_about">О программе</string>
+    <string name="menu_simple">Обычный</string>
+    <string name="menu_money">Конвертер валют</string>
 </resources>
