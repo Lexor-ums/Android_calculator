@@ -5,4 +5,6 @@
     <string name="menu_about">О программе</string>
     <string name="menu_simple">Обычный</string>
     <string name="menu_money">Конвертер валют</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
 </resources>
