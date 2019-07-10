@@ -12,7 +12,7 @@ import android.widget.TextView
 import com.example.calculator.R
 import com.example.calculator.operations.Operator
 import com.example.calculator.operations.Solver
-import kotlinx.android.synthetic.main.calc_layout.view.*
+import kotlinx.android.synthetic.main.calc_fragment.view.*
 
 class CalcFragment  : Fragment() {
     private var callback: OnOperationComplited? = null
@@ -26,7 +26,7 @@ class CalcFragment  : Fragment() {
 
     @SuppressLint("ResourceType")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater.inflate(R.layout.calc_layout, container, false)
+        var view = inflater.inflate(R.layout.calc_fragment, container, false)
         inputField = view.dataField
         historyTextView = view.historyField
         historyTextView.text = savedInstanceState?.getString("history")

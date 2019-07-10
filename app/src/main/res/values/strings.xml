@@ -3,8 +3,12 @@
     <string name="divide_symbol">/</string>
     <string name="back_symbol">b</string>
     <string name="menu_about">О программе</string>
-    <string name="menu_simple">Обычный</string>
-    <string name="menu_money">Конвертер валют</string>
+    <string name="menu_calc_type">Вид</string>
+    <string name="menu_calc_simple">Обычный</string>
+    <string name="menu_calc_financial">Конвертер валют</string>
+    <string name="menu_exit">выход</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+    <string name="tab_calc">Рассчёт</string>
+    <string name="tab_exchange">Курсы</string>
 </resources>

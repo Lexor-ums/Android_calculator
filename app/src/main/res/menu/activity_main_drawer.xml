@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<tools:menu xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            tools:showIn="navigation_view">
 
-    <item android:title="Item"/>
-    <item android:title="Item">
-        <menu
-        >
-            <item android:title="Item"/>
-            <item android:title="Item"/>
-        </menu>
-    </item>
+<tools:menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+<item
+        android:id="@+id/nav_about"
+        android:title="@string/menu_about"/>
+
+<item android:title="@string/menu_calc_type">
+    <menu>
+        <group android:checkableBehavior="single">
+            <item
+                    android:id="@+id/nav_simple"
+                    android:title="@string/menu_calc_simple"/>
+            <item
+                    android:id="@+id/nav_financial"
+                    android:title="@string/menu_calc_financial"/>
+        </group>
+    </menu>
+</item>
+<item
+        android:id="@+id/nav_exit"
+        android:title="@string/menu_exit"/>
+
 </tools:menu>
