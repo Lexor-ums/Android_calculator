@@ -11,4 +11,9 @@
     <string name="navigation_drawer_close">Close</string>
     <string name="tab_calc">Рассчёт</string>
     <string name="tab_exchange">Курсы</string>
+    <string name="operator_add">Add</string>
+    <string name="operator_multiply">Multiply</string>
+    <string name="operator_subtract">Subtract</string>
+    <string name="operator_division">Division</string>
+    <string name="operator_equal">Equal</string>
 </resources>
