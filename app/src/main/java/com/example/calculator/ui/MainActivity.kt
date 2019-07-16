@@ -15,7 +15,6 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.content_main_layout.*
 
 class MainActivity : AppCompatActivity(),
-//    CalcFragment.OnOperationComplited,
     NavigationView.OnNavigationItemSelectedListener {
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -41,46 +40,5 @@ class MainActivity : AppCompatActivity(),
 
         navView.setNavigationItemSelectedListener(this)
     }
-
-
-//    override fun onAttachFragment(fragment: Fragment?) {
-//        if (fragment is CalcFragment)
-//            fragment.setInputFragmentCallback(this)
-//    }
-//
-//    /**
-//    //     * обработка события вводы цифр
-//    //     */
-//    fun onDigitInput(view: View) {
-//        inputFrag.onDigitInput(view)
-//    }
-//
-//    /**
-//     * обработка выбора операций над числами
-//     */
-//    fun onOperatorClicked(view: View) {
-//        inputFrag.onOperatorClicked(view)
-//    }
-//
-//    /**
-//     * обработка события удаления введённого символа
-//     */
-//    fun onEraseClicked(view: View) {
-//        inputFrag.onEraseClicked(view)
-//    }
-//
-//    /**
-//     * обработка события сброса данных
-//     */
-//    fun onClear(view: View) {
-//        inputFrag.onClear(view)
-//    }
-//
-//    /**
-//     * обработка переключения на ввод чисел с плавающей точкой
-//     */
-//    fun onIntDoubleSwitch(view: View) {
-//        inputFrag.onIntDoubleSwitch(view)
-//    }
 }
 

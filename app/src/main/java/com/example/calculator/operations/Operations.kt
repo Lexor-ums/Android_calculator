@@ -63,7 +63,7 @@ enum class Operations(operation: String) : Action, Sign {
         }
 
         override fun action(leftVal: BigDecimal, rightVal: BigDecimal): BigDecimal? {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return BigDecimal(0)
         }
     };
 

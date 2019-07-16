@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="viewModel" type="com.example.calculator.ui.calcfragment.HistoryViewItemModel"/>
+        <variable name="parentView" type="com.example.calculator.ui.calcfragment.CalcFragmentViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/resultItemLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/textViewPrevResult"
+                android:text="@{viewModel.getFullExpression()}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:textSize="15sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/textViewCurrentAction"/>
+        <TextView
+                android:id="@+id/textViewCurrentAction"
+                android:text="@{viewModel.getOperation(safeUnbox(parentView.isComplite))}"
+                android:textSize="20sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPrevResult"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
