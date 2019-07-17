@@ -8,9 +8,10 @@ import com.example.calculator.R
 import com.example.calculator.databinding.HistoryItemBinding
 import com.example.calculator.models.HistoryModelItem
 import kotlinx.android.synthetic.main.calc_fragment.view.*
+import javax.inject.Inject
 
-class HistoryViewAdapter : RecyclerView.Adapter<HistoryViewAdapter.HistoryViewHolder>(){
-    private var history : MutableList<HistoryModelItem> = mutableListOf()
+class HistoryViewAdapter @Inject constructor(private var history : MutableList<HistoryModelItem> ): RecyclerView.Adapter<HistoryViewAdapter.HistoryViewHolder>(){
+//    private var history : MutableList<HistoryModelItem> = mutableListOf()
 
     override fun getItemCount(): Int {
         return history.size

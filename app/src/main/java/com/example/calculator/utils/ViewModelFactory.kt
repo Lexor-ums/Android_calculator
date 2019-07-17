@@ -3,12 +3,27 @@ package com.example.calculator.utils
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import java.lang.IllegalArgumentException
+import javax.inject.Inject
+import javax.inject.Provider
+import javax.inject.Singleton
 
-class ViewModelFactory<T>(private val v: T) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(v!!::class.java))
-            return v as T
-        throw IllegalArgumentException("Unknown class name")
+//class ViewModelFactory @Inject constructor(private val viewModels: CalcFragmentViewModel) :
+//    ViewModelProvider.Factory {
+//
+//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//        val viewModelProvider = viewModels[modelClass]
+//            ?: throw IllegalArgumentException("model class $modelClass not found")
+//        return viewModelProvider.get() as T
+//    }
+//
+//}
+@Singleton
+class ViewModelFactory @Inject constructor(private val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>>) : ViewModelProvider.Factory {
+
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        val viewModelProvider = viewModels[modelClass]
+            ?: throw IllegalArgumentException("model class $modelClass not found")
+        return viewModelProvider.get() as T
     }
 
 }

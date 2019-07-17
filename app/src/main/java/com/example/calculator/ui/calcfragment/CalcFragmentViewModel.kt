@@ -5,24 +5,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
-import com.example.calculator.BR
 import com.example.calculator.MainApplication
 import com.example.calculator.R
 import com.example.calculator.models.HistoryModelItem
 import com.example.calculator.operations.Operations
 import java.lang.Exception
 import java.math.BigDecimal
-import java.util.*
+import javax.inject.Inject
 
-class CalcFragmentViewModel : ViewModel() {
+class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
     private var recyclerView : RecyclerView? = null
 
     private val __valueToInput = MutableLiveData("0")
     private val __operationSign = MutableLiveData("")
     private val __result = MutableLiveData("")
     private val __isComplite = MutableLiveData(false)
-
-    private val historyAdapter: HistoryViewAdapter = HistoryViewAdapter()
+    private val historyAdapter: HistoryViewAdapter = HistoryViewAdapter(mutableListOf())
     var count = -1
 
     val valueToInput: LiveData<String> = __valueToInput

@@ -9,18 +9,29 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.calculator.R
+import com.example.calculator.core.BaseActivity
 
 import com.example.calculator.ui.calcfragment.CalcFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.content_main_layout.*
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(),
+class MainActivity : BaseActivity<MainActivityViewModel>(),
     NavigationView.OnNavigationItemSelectedListener {
+
+
+    private var inputFrag: CalcFragment = CalcFragment()
+    @Inject
+    lateinit var viewmodel : MainActivityViewModel
+
+    override fun getViewModel(): MainActivityViewModel {
+        return viewmodel
+    }
+
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    private var inputFrag: CalcFragment = CalcFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
