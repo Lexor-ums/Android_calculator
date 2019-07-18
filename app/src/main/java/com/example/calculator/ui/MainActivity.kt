@@ -2,54 +2,50 @@ package com.example.calculator.ui
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
 import com.example.calculator.R
-import com.example.calculator.core.BaseActivity
 
 import com.example.calculator.ui.calcfragment.CalcFragment
+import com.example.calculator.ui.financialfragment.financialmainfragment.FinancialMainFragment
+import com.example.calculator.utils.FragmentUtils
 import com.google.android.material.navigation.NavigationView
+import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main_layout.*
-import javax.inject.Inject
 
-class MainActivity : BaseActivity<MainActivityViewModel>(),
+class MainActivity : DaggerAppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener {
 
 
-    private var inputFrag: CalcFragment = CalcFragment()
-    @Inject
-    lateinit var viewmodel : MainActivityViewModel
-
-    override fun getViewModel(): MainActivityViewModel {
-        return viewmodel
-    }
-
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val id = p0.itemId
+        if(id == R.id.nav_financial){
+            FragmentUtils.replaceFragment(this, FinancialMainFragment.getInstance(),fragmentView.id, true)
+        }
+        return false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportFragmentManager.beginTransaction().add(fragmentView.id, inputFrag).commit()
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        FragmentUtils.replaceFragment(this, CalcFragment.getInstance(),fragmentView.id, false)
+        val toolbar: Toolbar = toolbar
         setSupportActionBar(toolbar)
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        val navView: NavigationView = findViewById(R.id.nav_view)
+        val drawerLayout: DrawerLayout? = drawer_layout
+        val navView: NavigationView? = nav_view
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
         )
-        drawerLayout.addDrawerListener(toggle)
+        drawerLayout?.addDrawerListener(toggle)
         toggle.syncState()
 
-        navView.setNavigationItemSelectedListener(this)
+        navView?.setNavigationItemSelectedListener(this)
     }
 }
 

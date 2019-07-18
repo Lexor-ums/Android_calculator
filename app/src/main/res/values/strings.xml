@@ -16,4 +16,15 @@
     <string name="operator_subtract">Subtract</string>
     <string name="operator_division">Division</string>
     <string name="operator_equal">Equal</string>
+    <string name="button_request">Запрос курсов</string>
+    <string name="usd">1 USD = </string>
+    <string name="eur">1 EUR = </string>
+    <string name="cny">1 CNY = </string>
+    <string name="rub">RUB</string>
+    <string-array name="money_symbols">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>CNY</item>
+        <item>RUB</item>
+    </string-array>
 </resources>

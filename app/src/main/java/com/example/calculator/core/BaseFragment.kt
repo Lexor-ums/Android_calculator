@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import dagger.android.support.DaggerFragment
 import androidx.lifecycle.ViewModelProvider
@@ -38,12 +39,4 @@ abstract class BaseFragment<T : ViewModel?, D : ViewDataBinding> : DaggerFragmen
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModel())
 
     }
-//    override fun onAttach(context: Context?) {
-//        super.onAttach(context)
-//        viewModel = getViewModel()
-//    }
-//
-//    override fun onDetach() {
-//        super.onDetach()
-//    }
 }
