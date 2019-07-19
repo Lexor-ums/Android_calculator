@@ -13,10 +13,12 @@ import javax.inject.Singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import okhttp3.logging.HttpLoggingInterceptor
+
 
 @Module
 class NetworkModule {
-    var okHttpClient: OkHttpClient = OkHttpClient()
+    private var okHttpClient: OkHttpClient = OkHttpClient()
     @Provides
     @Singleton
     fun provideGson(): Gson {
@@ -28,15 +30,18 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
-        okHttpClient =  OkHttpClient.Builder().connectTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS).build()
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        okHttpClient =
+            OkHttpClient.Builder().addInterceptor(interceptor).connectTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS).build()
         return okHttpClient
     }
 
     @Provides
     @Singleton
-    fun provideRetrofit(gson : Gson, okHttpClient : OkHttpClient): Retrofit {
-        return Retrofit.Builder ()
+    fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create(gson))
             .baseUrl(BASE_URL)
             .client(okHttpClient)
@@ -45,7 +50,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit  :Retrofit) : CurRateApiService{
+    fun provideApiService(retrofit: Retrofit): CurRateApiService {
         return retrofit.create(CurRateApiService::class.java)
     }
 }

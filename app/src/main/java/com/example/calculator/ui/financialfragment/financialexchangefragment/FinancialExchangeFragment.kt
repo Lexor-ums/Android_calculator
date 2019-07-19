@@ -8,17 +8,23 @@ import androidx.fragment.app.Fragment
 import com.example.calculator.R
 import com.example.calculator.core.BaseFragment
 import com.example.calculator.databinding.FinancialExchangeRateFragmentBinding
-import retrofit2.Retrofit
-import javax.inject.Inject
+
 
 class FinancialExchangeFragment :
     BaseFragment<FinancialExchangeFragmentViewModel, FinancialExchangeRateFragmentBinding>() {
-    @Inject
-    lateinit var retrofit: Retrofit
     override fun getViewModel(): Class<FinancialExchangeFragmentViewModel> {
         return FinancialExchangeFragmentViewModel::class.java
     }
 
+    override fun onPause() {
+        super.onPause()
+        viewModel?.storeData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel?.restoreData()
+    }
     override fun getLayoutRes(): Int {
         return R.layout.financial_exchange_rate_fragment
     }
@@ -36,5 +42,4 @@ class FinancialExchangeFragment :
 
         }
     }
-
 }

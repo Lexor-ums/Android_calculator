@@ -30,7 +30,6 @@ class FinancialMainFragment : BaseFragment<FinancialMainFragmentViewModel, Finan
         val financialTabLayout : TabLayout = tabLayout
         financialTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                println("Tab selected ${tab.position}")
                 when (tab.position) {
                     0 -> FragmentUtils.replaceFragment(
                         activity as AppCompatActivity,

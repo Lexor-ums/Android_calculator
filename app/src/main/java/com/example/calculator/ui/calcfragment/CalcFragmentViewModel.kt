@@ -35,9 +35,6 @@ class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
 
     private var isDecimal = false
 
-    fun setRecyler(recyclerView: RecyclerView){
-        this.recyclerView = recyclerView
-    }
     fun getAdapter() : HistoryViewAdapter{
         return historyAdapter
     }

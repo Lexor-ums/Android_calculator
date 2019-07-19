@@ -2,6 +2,7 @@ package com.example.calculator
 
 import android.app.Application
 import android.content.res.Resources
+import com.example.calculator.dagger.components.ApplicationMainComponent
 import com.example.calculator.dagger.components.DaggerApplicationMainComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -14,14 +15,19 @@ class MainApplication : Application(), HasAndroidInjector{
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
     private lateinit var appResources: Resources
+    private var appComponent: ApplicationMainComponent? = null
 
     override fun onCreate() {
         super.onCreate()
         appResources = resources
         instance = this
-        DaggerApplicationMainComponent.create()
-            .injectApplication(this)
-
+//        DaggerApplicationMainComponent.create()
+//            .injectApplication(this)
+        appComponent = DaggerApplicationMainComponent.builder()
+            .application(this)
+            .build()
+        appComponent!!.inject(this);
+//        AppInjector.init(this);
     }
 
     fun getRsources() : Resources{
