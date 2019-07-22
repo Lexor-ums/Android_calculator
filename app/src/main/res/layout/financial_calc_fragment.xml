@@ -7,101 +7,56 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
         <Spinner
-                android:id="@+id/spinnerMain"
+                android:id="@+id/spinnerSource"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/spinnerSecond"
-                app:layout_constraintEnd_toStartOf="@+id/editTextMainCash"
+                app:layout_constraintBottom_toTopOf="@+id/spinnerTarget"
+                app:layout_constraintEnd_toStartOf="@+id/editTextSource"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"/>
         <Spinner
-                android:id="@+id/spinnerSecond"
+                android:id="@+id/spinnerTarget"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/editTextSecondCash"
-                app:layout_constraintBottom_toTopOf="@+id/spinnerThird"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerMain"
-                android:layout_marginStart="8dp"/>
-        <Spinner
-                android:id="@+id/spinnerThird"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerSecond"
-                app:layout_constraintBottom_toTopOf="@+id/spinnerFourth"
-                app:layout_constraintEnd_toStartOf="@+id/editTextThirdCash"
-                android:layout_marginStart="8dp"/>
-        <Spinner
-                android:id="@+id/spinnerFourth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/editTextTarget"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerSource"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerThird"
-                app:layout_constraintEnd_toStartOf="@+id/editTextFourthCash"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginStart="8dp"/>
 
 
         <EditText
-                android:id="@+id/editTextMainCash"
+                android:id="@+id/editTextSource"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:ems="10"
+                android:text="@={viewmodel.sourceCash}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/editTextSecondCash"
-                app:layout_constraintStart_toEndOf="@+id/spinnerMain"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTarget"
+                app:layout_constraintStart_toEndOf="@+id/spinnerSource"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"/>
         <EditText
-                android:id="@+id/editTextSecondCash"
+                android:id="@+id/editTextTarget"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:ems="10"
-                app:layout_constraintStart_toEndOf="@+id/spinnerSecond"
+                android:text="@{viewmodel.targetCash}"
+                app:layout_constraintStart_toEndOf="@+id/spinnerTarget"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextMainCash"
-                app:layout_constraintBottom_toTopOf="@+id/editTextThirdCash"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="8dp"/>
-        <EditText
-                android:id="@+id/editTextThirdCash"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:ems="10"
-                app:layout_constraintStart_toEndOf="@+id/spinnerThird"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextSecondCash"
-                app:layout_constraintBottom_toTopOf="@+id/editTextFourthCash"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="8dp"/>
-        <EditText
-                android:id="@+id/editTextFourthCash"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:ems="10"
+                app:layout_constraintTop_toBottomOf="@+id/editTextSource"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/spinnerFourth"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextThirdCash"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp" android:clickable="false"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

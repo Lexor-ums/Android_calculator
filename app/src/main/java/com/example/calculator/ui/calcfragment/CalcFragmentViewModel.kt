@@ -1,13 +1,10 @@
 package com.example.calculator.ui.calcfragment
 
-import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
-import com.example.calculator.MainApplication
-import com.example.calculator.R
-import com.example.calculator.models.HistoryModelItem
+import com.example.calculator.data.models.HistoryModelItem
 import com.example.calculator.operations.Operations
 import java.lang.Exception
 import java.math.BigDecimal
@@ -29,12 +26,16 @@ class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
     val isComplite = __isComplite
 
     private var prevValue: BigDecimal = BigDecimal.valueOf(0)
+    private var prevBuffValue: BigDecimal = BigDecimal.valueOf(0)
     private var currentValue: BigDecimal = BigDecimal.valueOf(0)
     private var resultValue: BigDecimal = BigDecimal.valueOf(0)
     private var lastOperation: Operations? = null
 
     private var isDecimal = false
 
+    fun setRecylcer(view : RecyclerView){
+        this.recyclerView = view
+    }
     fun getAdapter() : HistoryViewAdapter{
         return historyAdapter
     }
@@ -55,8 +56,8 @@ class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
             println(e.message)
         }
         if (lastOperation != null) {
-            resultValue = prevValue
-            resultValue = lastOperation?.action(resultValue, currentValue)!!
+//            resultValue = prevValue
+            resultValue = lastOperation?.action(prevValue, currentValue)!!
             __result.value = "= $resultValue"
         }
     }
@@ -97,12 +98,12 @@ class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
     }
 
     fun onOperatorClicked(operation: String) {
+        prevBuffValue = prevValue
         prevValue = if (lastOperation != null)
             resultValue
         else
             currentValue
         lastOperation = Operations.create(operation)
-        currentValue = BigDecimal.valueOf(0)
         isDecimal = false
         __valueToInput.value = ""
         __operationSign.value = lastOperation?.getSign()
@@ -136,7 +137,8 @@ class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
     }
 
     private fun updateHistory() {
-        historyAdapter.addItem(HistoryModelItem(prevValue, prevValue, lastOperation!!.getSign(), resultValue))
-        recyclerView?.layoutManager?.scrollToPosition(count)
+        historyAdapter.addItem(HistoryModelItem(prevValue, currentValue, lastOperation!!.getSign(), prevBuffValue))
+        recyclerView!!.smoothScrollToPosition(count)
+        currentValue = BigDecimal.valueOf(0)
     }
 }

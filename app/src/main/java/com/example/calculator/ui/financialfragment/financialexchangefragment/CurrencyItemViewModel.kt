@@ -2,7 +2,7 @@ package com.example.calculator.ui.financialfragment.financialexchangefragment
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.calculator.models.CurrencyModelItem
+import com.example.calculator.data.models.CurrencyModelItem
 
 class CurrencyItemViewModel(private val item: CurrencyModelItem) : ViewModel() {
     var sourceCurrency = MutableLiveData("")

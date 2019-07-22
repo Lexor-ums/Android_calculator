@@ -19,6 +19,10 @@ class CalcFragment : BaseFragment<CalcFragmentViewModel, CalcFragmentBinding>() 
         return R.layout.calc_fragment
     }
 
+    override fun onResume() {
+        super.onResume()
+        dataBinding?.historyView?.let { viewModel?.setRecylcer(it) }
+    }
     @SuppressLint("ResourceType")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)

@@ -39,7 +39,6 @@ class FinancialExchangeFragment :
     companion object{
         fun getInstance() : Fragment {
             return FinancialExchangeFragment()
-
         }
     }
 }

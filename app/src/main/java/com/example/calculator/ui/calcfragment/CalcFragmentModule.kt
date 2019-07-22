@@ -1,8 +1,6 @@
 package com.example.calculator.ui.calcfragment
 
-import androidx.lifecycle.ViewModelProvider
-import com.example.calculator.models.HistoryModelItem
-import com.example.calculator.utils.ViewModelFactory
+import com.example.calculator.data.models.HistoryModelItem
 import dagger.Module
 import dagger.Provides
 

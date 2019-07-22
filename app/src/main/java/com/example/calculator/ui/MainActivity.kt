@@ -1,9 +1,11 @@
 package com.example.calculator.ui
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.calculator.R
 
@@ -25,6 +27,7 @@ class MainActivity : DaggerAppCompatActivity(),
         if(id == R.id.nav_financial){
             FragmentUtils.replaceFragment(this, FinancialMainFragment.getInstance(),fragmentView.id, true)
         }
+        drawer_layout.closeDrawer(GravityCompat.START)
         return false
     }
 

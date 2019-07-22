@@ -1,6 +1,6 @@
 package com.example.calculator.ui.calcfragment
 import androidx.databinding.BaseObservable
-import com.example.calculator.models.HistoryModelItem
+import com.example.calculator.data.models.HistoryModelItem
 
 class HistoryViewItemModel(private val item : HistoryModelItem) : BaseObservable() {
     fun getOperation(isFinished : Boolean)  :String{

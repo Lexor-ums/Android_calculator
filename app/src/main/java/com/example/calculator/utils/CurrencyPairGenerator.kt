@@ -3,7 +3,7 @@ package com.example.calculator.utils
 import androidx.lifecycle.MutableLiveData
 import com.example.calculator.MainApplication
 import com.example.calculator.R
-import com.example.calculator.models.CurrencyModelItem
+import com.example.calculator.data.models.CurrencyModelItem
 
 class CurrencyPairGenerator {
     companion object{

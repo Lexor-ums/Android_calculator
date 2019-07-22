@@ -1,6 +1,5 @@
-package com.example.calculator.models
+package com.example.calculator.data.models
 
-import android.R
 import androidx.lifecycle.MutableLiveData
 
 data class CurrencyModelItem(

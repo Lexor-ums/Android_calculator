@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.calculator.R
 import com.example.calculator.databinding.CurrencyItemBinding
-import com.example.calculator.models.CurrencyModelItem
+import com.example.calculator.data.models.CurrencyModelItem
 import javax.inject.Inject
 
 class CurrencyItemViewAdapter @Inject constructor(private var currencies: List<CurrencyModelItem>) :
