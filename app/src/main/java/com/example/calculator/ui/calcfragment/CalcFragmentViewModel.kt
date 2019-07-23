@@ -10,8 +10,8 @@ import java.lang.Exception
 import java.math.BigDecimal
 import javax.inject.Inject
 
-class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
-    private var recyclerView : RecyclerView? = null
+class CalcFragmentViewModel @Inject constructor() : ViewModel() {
+    private var recyclerView: RecyclerView? = null
 
     private val __valueToInput = MutableLiveData("0")
     private val __operationSign = MutableLiveData("")
@@ -33,12 +33,27 @@ class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
 
     private var isDecimal = false
 
-    fun setRecylcer(view : RecyclerView){
+    /**
+     * установка Recycler view
+     * @param view - id view
+     */
+
+    fun setRecylcer(view: RecyclerView) {
         this.recyclerView = view
     }
-    fun getAdapter() : HistoryViewAdapter{
+
+    /**
+     * возвращает ссылку на адаптер
+     */
+    fun getAdapter(): HistoryViewAdapter {
         return historyAdapter
     }
+
+    /**
+     * обработка ввода цифр
+     * @param  digit - введенная цифра
+     */
+
     fun onDigitClick(digit: Int) {
         try {
             val newValue: BigDecimal = when (isDecimal) {
@@ -62,6 +77,9 @@ class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
         }
     }
 
+    /**
+     * обработка ввода чисел с плавающей точкой
+     */
     fun onDotClick() {
         if (isDecimal)
             return
@@ -69,6 +87,9 @@ class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
         __valueToInput.value += "."
     }
 
+    /**
+     * обработка события коррекции введённого числа
+     */
     fun onEraseClick() {
         val tmp = currentValue
         var newValue = __valueToInput.value
@@ -97,6 +118,10 @@ class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
         __result.value = "= $resultValue"
     }
 
+    /**
+     * обработка выбора арифметической операции
+     * @param operation - символ операции
+     */
     fun onOperatorClicked(operation: String) {
         prevBuffValue = prevValue
         prevValue = if (lastOperation != null)
@@ -111,7 +136,10 @@ class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
         updateHistory()
     }
 
-    fun onClearClick(){
+    /**
+     * очистка событий
+     */
+    fun onClearClick() {
         __result.value = ""
         __valueToInput.value = "0"
         __operationSign.value = ""
@@ -122,7 +150,10 @@ class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
         historyAdapter.clear()
     }
 
-    fun onEqualClick(operation: String){
+    /**
+     * завершение вычислений
+     */
+    fun onEqualClick(operation: String) {
         __isComplite.value = true
         __result.value = ""
         resultValue = prevValue
@@ -136,6 +167,9 @@ class CalcFragmentViewModel @Inject constructor()  : ViewModel() {
         lastOperation = null
     }
 
+    /**
+     * добавление новой записи в историю операций
+     */
     private fun updateHistory() {
         historyAdapter.addItem(HistoryModelItem(prevValue, currentValue, lastOperation!!.getSign(), prevBuffValue))
         recyclerView!!.smoothScrollToPosition(count)

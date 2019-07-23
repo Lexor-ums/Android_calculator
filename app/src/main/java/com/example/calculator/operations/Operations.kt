@@ -9,10 +9,18 @@ import kotlin.Double.Companion.NaN
 import kotlin.reflect.typeOf
 
 interface Action {
+    /**
+     * возвращает результат вычислений
+     * @param leftVal левый операнд
+     * @param rightVal правый операнд
+     */
     fun action(leftVal: BigDecimal, rightVal: BigDecimal): BigDecimal?
 }
 
 interface Sign {
+    /**
+     * возвращает знак оерации
+     */
     fun getSign(): String
 }
 
