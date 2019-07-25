@@ -39,13 +39,16 @@ class HistoryViewAdapter @Inject constructor(private var history : MutableList<H
             bind()
         }
 
-        fun bind(){
+        /**
+         * привязка модели ко view
+         */
+        private fun bind(){
             binding = androidx.databinding.DataBindingUtil.bind(itemView)
         }
 
-        fun unbind(){
-            binding?.unbind()
-        }
+        /**
+         * установка модели данных
+         */
         fun setViewModel(viewModel : HistoryViewItemModel){
             binding?.viewModel = viewModel
         }
