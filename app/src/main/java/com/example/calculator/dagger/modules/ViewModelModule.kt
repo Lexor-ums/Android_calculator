@@ -8,7 +8,7 @@ import com.example.calculator.presentation.calcfragment.CalcFragmentViewModel
 import com.example.calculator.presentation.financialfragment.financialconvertionfragment.FinancialConversionFragmentViewModel
 import com.example.calculator.presentation.financialfragment.financialexchangefragment.FinancialExchangeFragmentViewModel
 import com.example.calculator.presentation.financialfragment.financialmainfragment.FinancialMainFragmentViewModel
-import com.example.calculator.utils.ViewModelFactory
+import com.example.calculator.presentation.ViewModelFactory
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

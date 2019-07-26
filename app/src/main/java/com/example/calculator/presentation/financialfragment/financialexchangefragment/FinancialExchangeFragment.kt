@@ -36,9 +36,4 @@ class FinancialExchangeFragment :
         return dataBinding?.root
     }
 
-    companion object{
-        fun getInstance() : Fragment {
-            return FinancialExchangeFragment()
-        }
-    }
 }

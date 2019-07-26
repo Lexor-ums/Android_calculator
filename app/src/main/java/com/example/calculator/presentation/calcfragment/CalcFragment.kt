@@ -30,9 +30,4 @@ class CalcFragment : BaseFragment<CalcFragmentViewModel, CalcFragmentBinding>() 
         dataBinding?.viewmodel = viewModel
         return dataBinding?.root
     }
-    companion object {
-        fun getInstance(): CalcFragment {
-            return CalcFragment()
-        }
-    }
 }

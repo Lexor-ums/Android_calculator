@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.fragment.app.Fragment
 import com.example.calculator.R
 import com.example.calculator.databinding.FinancialCalcFragmentBinding
 import com.example.calculator.presentation.base.BaseFragment
@@ -36,12 +35,6 @@ class FinancialConvertionFragment : BaseFragment<FinancialConversionFragmentView
 
         })
         return dataBinding?.root
-    }
-
-    companion object {
-        fun getInstance(): Fragment {
-            return FinancialConvertionFragment()
-        }
     }
 
     private fun setupSpinners() {

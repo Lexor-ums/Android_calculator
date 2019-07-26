@@ -4,18 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import com.example.calculator.R
 import com.example.calculator.presentation.base.BaseFragment
 import com.example.calculator.databinding.FinancialMainFragmentBinding
-import com.example.calculator.presentation.financialfragment.financialconvertionfragment.FinancialConvertionFragment
-import com.example.calculator.presentation.financialfragment.financialexchangefragment.FinancialExchangeFragment
-import com.example.calculator.utils.FragmentUtils
+import com.example.calculator.utils.navigation.fragmentrouter.FragmentRouter
+import com.example.calculator.utils.navigation.fragmentrouter.Screens
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.financial_main_fragment.*
 
 class FinancialMainFragment : BaseFragment<FinancialMainFragmentViewModel, FinancialMainFragmentBinding>() {
-
+    private var fragmentRouter: FragmentRouter = FragmentRouter()
 
     override fun getViewModel(): Class<FinancialMainFragmentViewModel> {
         return FinancialMainFragmentViewModel::class.java
@@ -28,21 +26,12 @@ class FinancialMainFragment : BaseFragment<FinancialMainFragmentViewModel, Finan
     override fun onResume() {
         super.onResume()
         val financialTabLayout : TabLayout = tabLayout
+        fragmentRouter.navigateTo(Screens.FRAGMENTS.FINANCIAL_CONVERSION_FRAGMENT)
         financialTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {
-                    0 -> FragmentUtils.replaceFragment(
-                        activity as AppCompatActivity,
-                        FinancialConvertionFragment.getInstance(),
-                        R.id.financialMain,
-                        false
-                    )
-                    1 -> FragmentUtils.replaceFragment(
-                        activity as AppCompatActivity,
-                        FinancialExchangeFragment.getInstance(),
-                        R.id.financialMain,
-                        false
-                    )
+                    0 -> fragmentRouter.replace(Screens.FRAGMENTS.FINANCIAL_CONVERSION_FRAGMENT)
+                    1 ->fragmentRouter.replace(Screens.FRAGMENTS.FINANCIAL_EXCHANGE_FRAGMENT)
                 }
             }
             override fun onTabUnselected(tab: TabLayout.Tab) {
@@ -61,12 +50,10 @@ class FinancialMainFragment : BaseFragment<FinancialMainFragmentViewModel, Finan
         super.onCreateView(inflater, container, savedInstanceState)
         dataBinding?.lifecycleOwner = this
         dataBinding?.viewmodel = viewModel
+        fragmentRouter.initRouter(fragmentManager!!, R.id.financialMain, ::onFinishActivity)
         return dataBinding?.root
     }
 
-    companion object {
-        fun getInstance(): FinancialMainFragment {
-            return FinancialMainFragment()
-        }
+    private fun onFinishActivity(){
     }
 }
