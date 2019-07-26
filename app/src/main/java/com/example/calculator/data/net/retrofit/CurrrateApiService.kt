@@ -1,13 +1,14 @@
 package com.example.calculator.data.net.retrofit
 
-import com.example.calculator.data.net.retrofit.Response
-import retrofit2.Call
+import kotlinx.coroutines.Deferred
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface CurRateApiService {
 
     @GET("?get=rates")
-    fun getActual(@Query("pairs") pairs: String, @Query("key") key: String): Call<Response>
+    fun getActualAsync(@Query("pairs") pairs: String,
+                       @Query("key") key: String): Deferred<Response<CurrencyResponse>>
 
 }

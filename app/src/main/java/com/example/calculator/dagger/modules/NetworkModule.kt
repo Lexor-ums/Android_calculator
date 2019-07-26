@@ -1,11 +1,14 @@
 package com.example.calculator.dagger.modules
 
 import com.example.calculator.data.net.retrofit.CurRateApiService
+import com.example.calculator.domain.interactors.BaseInteractor
+import com.example.calculator.domain.interactors.LoadCurrencyInteractor
 import com.example.calculator.utils.BASE_URL
 import com.example.calculator.utils.REQUEST_TIMEOUT
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -43,6 +46,7 @@ class NetworkModule {
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .build()
@@ -52,5 +56,10 @@ class NetworkModule {
     @Singleton
     fun provideApiService(retrofit: Retrofit): CurRateApiService {
         return retrofit.create(CurRateApiService::class.java)
+    }
+    @Provides
+    @Singleton
+    fun provideInteractor(api: CurRateApiService): BaseInteractor {
+        return LoadCurrencyInteractor()
     }
 }

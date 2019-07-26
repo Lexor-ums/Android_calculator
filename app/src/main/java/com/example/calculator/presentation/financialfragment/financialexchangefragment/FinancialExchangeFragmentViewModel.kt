@@ -2,13 +2,14 @@ package com.example.calculator.presentation.financialfragment.financialexchangef
 
 import androidx.lifecycle.ViewModel
 import com.example.calculator.data.net.retrofit.CurRateApiService
-import com.example.calculator.data.net.retrofit.Response
 import com.example.calculator.data.repository.CurrencyRepositoryImpl
 import com.example.calculator.data.database.entity.CurrencyUnit
-import com.example.calculator.utils.API_KEY
+import com.example.calculator.domain.interactors.LoadCurrencyInteractor
 import com.example.calculator.utils.CurrencyPairGenerator
-import retrofit2.Call
-import retrofit2.Callback
+import com.example.calculator.utils.events.Events
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import javax.inject.Inject
 
 class FinancialExchangeFragmentViewModel @Inject constructor() : ViewModel() {
@@ -19,32 +20,29 @@ class FinancialExchangeFragmentViewModel @Inject constructor() : ViewModel() {
     lateinit var api: CurRateApiService
 
     @Inject
+    lateinit var interactor : LoadCurrencyInteractor
+    @Inject
     lateinit var repository: CurrencyRepositoryImpl
 
     fun getAdapter() : CurrencyItemViewAdapter{
         return currencyAdapter
     }
-    fun onMoneyRequestClick() {
-        val moneys = api.getActual(CurrencyPairGenerator.requestPairStr, API_KEY)
-        moneys.enqueue(object : Callback<Response> {
-            override fun onResponse(
-                call: Call<Response>,
-                response: retrofit2.Response<Response>
-            ) {
-                println("Result " + response.body()?.data.toString())
-                response.body()?.data?.let { parseRequest(it) }
-                currencyAdapter.updateData()
-            }
 
-            override fun onFailure(call: Call<Response>, t: Throwable) {
-                println("Display error code  ${t.toString()}")
-            }
-        })
+    @Subscribe(threadMode = ThreadMode.ASYNC)
+    fun onCurrencyLoaded(event: Events.CurrencyLoaded){
+        println("subscribe ${event.pairs}")
+        parseRequest(event.pairs)
     }
 
-    fun parseRequest(pairs: Map<String, String>) {
-        for ((k, v) in pairs) {
-            updatePairsList(k ,v)
+    fun onMoneyRequestClick() {
+        interactor.requestCurrency()
+    }
+
+    fun parseRequest(pairs: Map<String, String>?) {
+        if (pairs != null) {
+            for ((k, v) in pairs) {
+                updatePairsList(k ,v)
+            }
         }
     }
 
@@ -71,5 +69,13 @@ class FinancialExchangeFragmentViewModel @Inject constructor() : ViewModel() {
         for( currency in repository.getAll()){
             updatePairsList(currency.name, currency.price)
         }
+    }
+
+    fun onStart(){
+        EventBus.getDefault().register(this)
+    }
+
+    fun onStop(){
+        EventBus.getDefault().unregister(this)
     }
 }
