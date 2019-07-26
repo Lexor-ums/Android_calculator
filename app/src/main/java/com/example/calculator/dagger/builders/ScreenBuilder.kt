@@ -1,11 +1,11 @@
 package com.example.calculator.dagger.builders
 
-import com.example.calculator.ui.MainActivity
-import com.example.calculator.ui.MainActivityModule
-import com.example.calculator.ui.calcfragment.CalcFragmentProvider
-import com.example.calculator.ui.financialfragment.financialconvertionfragment.FinancialConversionFragmentProvider
-import com.example.calculator.ui.financialfragment.financialexchangefragment.FinancialExchangeFragmentProvider
-import com.example.calculator.ui.financialfragment.financialmainfragment.FinancialMainFragmnetProvider
+import com.example.calculator.presentation.MainActivity
+import com.example.calculator.presentation.MainActivityModule
+import com.example.calculator.presentation.calcfragment.CalcFragmentProvider
+import com.example.calculator.presentation.financialfragment.financialconvertionfragment.FinancialConversionFragmentProvider
+import com.example.calculator.presentation.financialfragment.financialexchangefragment.FinancialExchangeFragmentProvider
+import com.example.calculator.presentation.financialfragment.financialmainfragment.FinancialMainFragmnetProvider
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

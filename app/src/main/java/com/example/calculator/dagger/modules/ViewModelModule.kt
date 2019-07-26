@@ -3,12 +3,11 @@ package com.example.calculator.dagger.modules
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.calculator.dagger.ViewModelKey
-import com.example.calculator.ui.MainActivityViewModel
-import com.example.calculator.ui.calcfragment.CalcFragmentViewModel
-import com.example.calculator.ui.financialfragment.financialconvertionfragment.FinancialConversionFragmentViewModel
-import com.example.calculator.ui.financialfragment.financialconvertionfragment.FinancialConvertionFragment
-import com.example.calculator.ui.financialfragment.financialexchangefragment.FinancialExchangeFragmentViewModel
-import com.example.calculator.ui.financialfragment.financialmainfragment.FinancialMainFragmentViewModel
+import com.example.calculator.presentation.MainActivityViewModel
+import com.example.calculator.presentation.calcfragment.CalcFragmentViewModel
+import com.example.calculator.presentation.financialfragment.financialconvertionfragment.FinancialConversionFragmentViewModel
+import com.example.calculator.presentation.financialfragment.financialexchangefragment.FinancialExchangeFragmentViewModel
+import com.example.calculator.presentation.financialfragment.financialmainfragment.FinancialMainFragmentViewModel
 import com.example.calculator.utils.ViewModelFactory
 import dagger.Binds
 import dagger.Module

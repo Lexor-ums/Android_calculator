@@ -1,16 +1,14 @@
 package com.example.calculator.dagger.modules
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
-import com.example.calculator.data.database.CurrencyDao
+import com.example.calculator.data.database.dao.CurrencyDao
 import com.example.calculator.data.database.CurrencyDatabase
-import com.example.calculator.data.database.CurrencyRepositoryImpl
-import com.example.calculator.data.database.CurrencyRepositoryInterface
+import com.example.calculator.data.repository.CurrencyRepositoryImpl
+import com.example.calculator.data.repository.CurrencyRepositoryInterface
 import com.example.calculator.utils.DB_NAME
 import dagger.Module
 import dagger.Provides
-import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module

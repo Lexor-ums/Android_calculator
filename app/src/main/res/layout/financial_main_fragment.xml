@@ -3,7 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="viewmodel"
-                  type="com.example.calculator.ui.financialfragment.financialmainfragment.FinancialMainFragmentViewModel"/>
+                  type="com.example.calculator.presentation.financialfragment.financialmainfragment.FinancialMainFragmentViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="viewmodel"
-                  type="com.example.calculator.ui.calcfragment.CalcFragmentViewModel"/>
+                  type="com.example.calculator.presentation.calcfragment.CalcFragmentViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

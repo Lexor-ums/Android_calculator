@@ -3,8 +3,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable name="viewModel" type="com.example.calculator.ui.calcfragment.HistoryViewItemModel"/>
-        <variable name="parentView" type="com.example.calculator.ui.calcfragment.CalcFragmentViewModel"/>
+        <variable name="viewModel" type="com.example.calculator.presentation.calcfragment.HistoryViewItemModel"/>
+        <variable name="parentView" type="com.example.calculator.presentation.calcfragment.CalcFragmentViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/resultItemLayout"

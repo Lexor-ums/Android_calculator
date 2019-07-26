@@ -3,7 +3,7 @@ package com.example.calculator.utils
 import androidx.lifecycle.MutableLiveData
 import com.example.calculator.MainApplication
 import com.example.calculator.R
-import com.example.calculator.data.models.CurrencyModelItem
+import com.example.calculator.presentation.models.CurrencyModelItem
 
 class CurrencyPairGenerator {
     companion object{
@@ -17,7 +17,12 @@ class CurrencyPairGenerator {
                     val source = MutableLiveData(currency)
                     val target = MutableLiveData(rubStr)
                     val price = MutableLiveData("0")
-                    var item = CurrencyModelItem(source, price, target)
+                    var item =
+                        CurrencyModelItem(
+                            source,
+                            price,
+                            target
+                        )
                     list.add(item)
                     requestPairStr += "$currency$rubStr,"
                 }

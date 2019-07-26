@@ -1,6 +1,6 @@
 package com.example.calculator.dagger.modules
 
-import com.example.calculator.api.CurRateApiService
+import com.example.calculator.data.net.retrofit.CurRateApiService
 import com.example.calculator.utils.BASE_URL
 import com.example.calculator.utils.REQUEST_TIMEOUT
 import com.google.gson.FieldNamingPolicy
