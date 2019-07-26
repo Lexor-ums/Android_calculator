@@ -5,12 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.example.calculator.R
 import com.example.calculator.presentation.base.BaseFragment
 import com.example.calculator.databinding.CalcFragmentBinding
+import javax.inject.Inject
 
 
 class CalcFragment : BaseFragment<CalcFragmentViewModel, CalcFragmentBinding>() {
+
+
     override fun getViewModel(): Class<CalcFragmentViewModel> {
         return CalcFragmentViewModel::class.java
     }

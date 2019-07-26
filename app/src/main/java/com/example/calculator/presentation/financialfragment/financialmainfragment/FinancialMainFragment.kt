@@ -10,6 +10,7 @@ import com.example.calculator.databinding.FinancialMainFragmentBinding
 import com.example.calculator.utils.navigation.fragmentrouter.FragmentRouter
 import com.example.calculator.utils.navigation.fragmentrouter.Screens
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.content_main_layout.*
 import kotlinx.android.synthetic.main.financial_main_fragment.*
 
 class FinancialMainFragment : BaseFragment<FinancialMainFragmentViewModel, FinancialMainFragmentBinding>() {
@@ -26,13 +27,11 @@ class FinancialMainFragment : BaseFragment<FinancialMainFragmentViewModel, Finan
     override fun onResume() {
         super.onResume()
         val financialTabLayout : TabLayout = tabLayout
-        fragmentRouter.navigateTo(Screens.FRAGMENTS.FINANCIAL_CONVERSION_FRAGMENT)
+        fragmentRouter.initRouter(fragmentManager!!, financialMain.id, ::onFinishActivity)
+        viewModel?.setFragmentRouter(fragmentRouter)
         financialTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                when (tab.position) {
-                    0 -> fragmentRouter.replace(Screens.FRAGMENTS.FINANCIAL_CONVERSION_FRAGMENT)
-                    1 ->fragmentRouter.replace(Screens.FRAGMENTS.FINANCIAL_EXCHANGE_FRAGMENT)
-                }
+                viewModel?.switchFragment(tab.position)
             }
             override fun onTabUnselected(tab: TabLayout.Tab) {
 
@@ -44,13 +43,11 @@ class FinancialMainFragment : BaseFragment<FinancialMainFragmentViewModel, Finan
         })
         financialTabLayout.getTabAt(1)?.select()
         financialTabLayout.getTabAt(0)?.select()
-
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         dataBinding?.lifecycleOwner = this
         dataBinding?.viewmodel = viewModel
-        fragmentRouter.initRouter(fragmentManager!!, R.id.financialMain, ::onFinishActivity)
         return dataBinding?.root
     }
 
